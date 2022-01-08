@@ -1,0 +1,28 @@
+{
+    "short_name": "Model Editor",
+    "name": "3D模型编辑器",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "./image/logo-48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./image/logo-144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "sizes": "192x192",
+            "src": "./image/logo-192.png",
+            "type": "image/png"
+        },
+        {
+            "sizes": "512x512",
+            "src": "./image/logo-512.png",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "./index.html"
+}
