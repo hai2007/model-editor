@@ -6,22 +6,19 @@
         <span>
             新建
         </span>
-        <span>
-            导入
-        </span>
         <span class="more">
-            导出
+            导入
             <div>
                 <span>
-                    导出 STL
+                    本地选择
                 </span>
                 <span>
-                    导出 OBJ
-                </span>
-                <span>
-                    导出 FBX
+                    XHR文件请求
                 </span>
             </div>
+        </span>
+        <span>
+            导出
         </span>
         <span class='more'>
             帮助
@@ -35,10 +32,10 @@
             </div>
         </span>
     </div>
-    <div class="content">
+    <div class="content" id='canvas'>
 
         <!-- 画布 -->
-        <canvas ui-bind:width='size' ui-bind:height='size'></canvas>
+        <canvas ui-bind:width='width' ui-bind:height='height'></canvas>
 
     </div>
 </div>
