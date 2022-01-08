@@ -1,7 +1,6 @@
-var cacheName = 'sweethome-pwa';
+var cacheName = 'ModelEditor@v1';
 var cacheFiles = [
-    './',
-    './index.html'
+
 ];
 
 // 监听install事件，安装完成后，进行文件缓存
