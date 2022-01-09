@@ -3,21 +3,21 @@
         <a class="logo" target="_blank" href='https://github.com/hai2007/model-editor'>
             Model Editor
         </a>
-        <span>
+        <span ui-on:click='resetEditor'>
             新建
         </span>
         <span class="more">
             导入
             <div>
-                <span>
+                <span ui-on:click='inputLocalFile'>
                     本地选择
                 </span>
-                <span>
+                <span  ui-on:click='inputXhrFile'>
                     XHR文件请求
                 </span>
             </div>
         </span>
-        <span>
+        <span ui-on:click='exportFile'>
             导出
         </span>
         <span class='more'>
