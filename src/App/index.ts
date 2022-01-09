@@ -51,7 +51,10 @@ export default class {
 
         let painter = image3d.Painter()
         let buffer = image3d.Buffer()
-        let camera = image3d.Camera()
+        let camera = image3d.Camera({
+            size: 2,
+            proof: true
+        })
 
         image3d.setAttributeFloat("a_position", 0, 0, 0)
         image3d.setUniformFloat("u_color", 0.8, 0.8, 0.8, 1)
