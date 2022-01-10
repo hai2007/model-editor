@@ -9,10 +9,10 @@
         <span class="more">
             导入
             <div>
-                <span ui-on:click='inputLocalFile'>
-                    本地选择
+                <span>
+                    <label for='file'>本地选择</label>
                 </span>
-                <span  ui-on:click='inputXhrFile'>
+                <span ui-on:click='inputXhrFile'>
                     XHR文件请求
                 </span>
             </div>
@@ -38,4 +38,12 @@
         <canvas ui-bind:width='width' ui-bind:height='height'></canvas>
 
     </div>
+</div>
+
+<!-- 一些辅助而不需要显示的内容 -->
+<div class='no-view'>
+
+    <!-- 选择本地文件 -->
+    <input type="file" id="file" ui-on:change="inputLocalFile" accept=".json,.stl,.obj,.fbx" />
+
 </div>

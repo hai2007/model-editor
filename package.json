@@ -1,6 +1,6 @@
 {
   "name": "model-editor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "基于image3D.js开发的3D模型数据编辑器。",
   "scripts": {
     "build": "nodejs -e build && etcpack_pkg --config etcpack.prod.js",

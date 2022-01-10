@@ -68,12 +68,15 @@ var platform=__etcpack__scope_args__.platform;
 
 __etcpack__scope_args__=window.__etcpack__getBundle('3');
 var normalize =__etcpack__scope_args__.default;
- // 兼容文件
 
 __etcpack__scope_args__=window.__etcpack__getBundle('4');
+var style =__etcpack__scope_args__.default;
+ // 兼容文件
+
+__etcpack__scope_args__=window.__etcpack__getBundle('5');
  // 引入主模块
 
-__etcpack__scope_args__=window.__etcpack__getBundle('17');
+__etcpack__scope_args__=window.__etcpack__getBundle('18');
 var appModule =__etcpack__scope_args__.default;
  // 先获取平台实例
 
@@ -81,7 +84,7 @@ platform({
   // 框架管理的区域
   el: document.getElementById('root'),
   // 全局样式
-  styles: [normalize]
+  styles: [normalize, style]
 }) // 然后启动主模块
 .bootstrap(appModule);
   
@@ -1919,9 +1922,20 @@ window.__etcpack__bundleSrc__['3']=function(){
 }
 
 /*************************** [bundle] ****************************/
-// Original file:./node_modules/@hai2007/polyfill/Promise.js
+// Original file:./src/style.scss
 /*****************************************************************/
 window.__etcpack__bundleSrc__['4']=function(){
+    var __etcpack__scope_bundle__={};
+    var __etcpack__scope_args__;
+    __etcpack__scope_bundle__.default= "\n body{\n\noverflow: hidden;\n\n}\n"
+  
+    return __etcpack__scope_bundle__;
+}
+
+/*************************** [bundle] ****************************/
+// Original file:./node_modules/@hai2007/polyfill/Promise.js
+/*****************************************************************/
+window.__etcpack__bundleSrc__['5']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     /*!
@@ -1934,15 +1948,15 @@ window.__etcpack__bundleSrc__['4']=function(){
  * Released under the MIT license
  */
 
-__etcpack__scope_args__=window.__etcpack__getBundle('5');
+__etcpack__scope_args__=window.__etcpack__getBundle('6');
 var globalNAMESPACE =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('6');
+__etcpack__scope_args__=window.__etcpack__getBundle('7');
 var isFunction=__etcpack__scope_args__.isFunction;
 var isObject=__etcpack__scope_args__.isObject;
 var isArray=__etcpack__scope_args__.isArray;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('16');
+__etcpack__scope_args__=window.__etcpack__getBundle('17');
 var doResolve=__etcpack__scope_args__.doResolve;
 var changeState=__etcpack__scope_args__.changeState;
 var triggerEvent=__etcpack__scope_args__.triggerEvent;
@@ -2261,7 +2275,7 @@ if (!('Promise' in globalNAMESPACE)) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/polyfill/.inner/globalNAMESPACE.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['5']=function(){
+window.__etcpack__bundleSrc__['6']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var globalNAMESPACE = (function () {
@@ -2286,34 +2300,34 @@ __etcpack__scope_bundle__.default= globalNAMESPACE;
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/type.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['6']=function(){
+window.__etcpack__bundleSrc__['7']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('7');
+    __etcpack__scope_args__=window.__etcpack__getBundle('8');
 var _isObject =__etcpack__scope_args__.default;
 
 
-__etcpack__scope_args__=window.__etcpack__getBundle('8');
+__etcpack__scope_args__=window.__etcpack__getBundle('9');
 var _isBoolean =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('10');
+__etcpack__scope_args__=window.__etcpack__getBundle('11');
 var _isNumber =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('11');
+__etcpack__scope_args__=window.__etcpack__getBundle('12');
 var _isString =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('12');
+__etcpack__scope_args__=window.__etcpack__getBundle('13');
 var _isSymbol =__etcpack__scope_args__.default;
 
 
-__etcpack__scope_args__=window.__etcpack__getBundle('13');
+__etcpack__scope_args__=window.__etcpack__getBundle('14');
 var _isFunction =__etcpack__scope_args__.default;
 
 
-__etcpack__scope_args__=window.__etcpack__getBundle('14');
+__etcpack__scope_args__=window.__etcpack__getBundle('15');
 var _isError =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('15');
+__etcpack__scope_args__=window.__etcpack__getBundle('16');
 var _isPlainObject =__etcpack__scope_args__.default;
 
 
@@ -2362,7 +2376,7 @@ __etcpack__scope_bundle__.isComment = function (input) { return domTypeHelp([8],
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isObject.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['7']=function(){
+window.__etcpack__bundleSrc__['8']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     /**
@@ -2383,10 +2397,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isBoolean.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['8']=function(){
+window.__etcpack__bundleSrc__['9']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('9');
+    __etcpack__scope_args__=window.__etcpack__getBundle('10');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2408,7 +2422,7 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/getType.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['9']=function(){
+window.__etcpack__bundleSrc__['10']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var toString = Object.prototype.toString;
@@ -2433,10 +2447,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isNumber.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['10']=function(){
+window.__etcpack__bundleSrc__['11']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('9');
+    __etcpack__scope_args__=window.__etcpack__getBundle('10');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2460,10 +2474,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isString.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['11']=function(){
+window.__etcpack__bundleSrc__['12']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('9');
+    __etcpack__scope_args__=window.__etcpack__getBundle('10');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2485,10 +2499,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isSymbol.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['12']=function(){
+window.__etcpack__bundleSrc__['13']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('9');
+    __etcpack__scope_args__=window.__etcpack__getBundle('10');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2510,13 +2524,13 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isFunction.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['13']=function(){
+window.__etcpack__bundleSrc__['14']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('9');
+    __etcpack__scope_args__=window.__etcpack__getBundle('10');
 var getType =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('7');
+__etcpack__scope_args__=window.__etcpack__getBundle('8');
 var isObject =__etcpack__scope_args__.default;
 
 
@@ -2543,13 +2557,13 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isError.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['14']=function(){
+window.__etcpack__bundleSrc__['15']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('15');
+    __etcpack__scope_args__=window.__etcpack__getBundle('16');
 var isPlainObject =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('9');
+__etcpack__scope_args__=window.__etcpack__getBundle('10');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2577,10 +2591,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/tool/.inner/type/isPlainObject.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['15']=function(){
+window.__etcpack__bundleSrc__['16']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('9');
+    __etcpack__scope_args__=window.__etcpack__getBundle('10');
 var getType =__etcpack__scope_args__.default;
 
 
@@ -2616,10 +2630,10 @@ __etcpack__scope_bundle__.default= function (value) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/polyfill/.inner/Promise/doResolve.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['16']=function(){
+window.__etcpack__bundleSrc__['17']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_args__=window.__etcpack__getBundle('6');
+    __etcpack__scope_args__=window.__etcpack__getBundle('7');
 var isFunction=__etcpack__scope_args__.isFunction;
 var isObject=__etcpack__scope_args__.isObject;
 
@@ -2734,7 +2748,7 @@ __etcpack__scope_bundle__.doResolve = function (doback, that) {
 /*************************** [bundle] ****************************/
 // Original file:./src/app.module.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['17']=function(){
+window.__etcpack__bundleSrc__['18']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -2749,17 +2763,17 @@ __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Module=__etcpack__scope_args__.Module;
  // 组件
 
-__etcpack__scope_args__=window.__etcpack__getBundle('18');
+__etcpack__scope_args__=window.__etcpack__getBundle('19');
 var AppComponent =__etcpack__scope_args__.default;
  // 指令
 
-__etcpack__scope_args__=window.__etcpack__getBundle('29');
+__etcpack__scope_args__=window.__etcpack__getBundle('30');
 var uiBind =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('30');
+__etcpack__scope_args__=window.__etcpack__getBundle('31');
 var uiModel =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('31');
+__etcpack__scope_args__=window.__etcpack__getBundle('32');
 var uiOn =__etcpack__scope_args__.default;
 
 
@@ -2780,7 +2794,7 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./src/App/index.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['18']=function(){
+window.__etcpack__bundleSrc__['19']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -2789,11 +2803,13 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -2809,33 +2825,36 @@ __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Component=__etcpack__scope_args__.Component;
 var ref=__etcpack__scope_args__.ref;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('19');
+__etcpack__scope_args__=window.__etcpack__getBundle('20');
 var image3D =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('20');
+__etcpack__scope_args__=window.__etcpack__getBundle('21');
 var viewHandler =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('23');
+__etcpack__scope_args__=window.__etcpack__getBundle('24');
 var vertexShader =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('24');
+__etcpack__scope_args__=window.__etcpack__getBundle('25');
 var fragmentShader =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('25');
+__etcpack__scope_args__=window.__etcpack__getBundle('26');
 var doResize =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('26');
+__etcpack__scope_args__=window.__etcpack__getBundle('27');
 var style =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('27');
+__etcpack__scope_args__=window.__etcpack__getBundle('28');
 var template =__etcpack__scope_args__.default;
  // 辅助网格数据
 
-__etcpack__scope_args__=window.__etcpack__getBundle('28');
+__etcpack__scope_args__=window.__etcpack__getBundle('29');
 var boxModel =__etcpack__scope_args__.default;
 
 var boxModelData = boxModel();
 var resizeFlag = 0;
+var doDraw; // 当前绘制的模型数据
+
+var modelJSONs = [];
 
 var _class = (_dec = Component({
   selector: "app-root",
@@ -2876,12 +2895,45 @@ var _class = (_dec = Component({
   }, {
     key: "resetEditor",
     value: function resetEditor() {
-      alert('【新建】功能未完成，开发中，敬请期待！');
+      if (window.confirm('是否确定新建？')) {
+        // 清除数据
+        modelJSONs = []; // 重新绘制
+
+        resizeFlag += 1;
+        this.doit(resizeFlag);
+      }
     }
   }, {
     key: "inputLocalFile",
-    value: function inputLocalFile() {
-      alert('【本地选择】功能未完成，开发中，敬请期待！');
+    value: function inputLocalFile(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+      var isJSON;
+
+      reader.onload = function () {
+        var modelJSON;
+
+        if (isJSON) {
+          modelJSON = JSON.parse(reader.result); // 后续再考虑使用需要借助indexedDB或别的缓存起来
+
+          modelJSONs.push(modelJSON); // 重新绘制
+
+          doDraw();
+        } else {
+          console.log(reader.result);
+          alert('当前格式未支持（开发中），当前请选择JSON文件的模型~');
+        }
+      }; // JSON字符串
+      // （可能是Object3D.toJSON或者别的规范格式）
+
+
+      if (/\.json$/.test(file.name)) {
+        isJSON = true;
+        reader.readAsText(file);
+      } // ASCII编码的或者二进制文件
+      else {
+        reader.readAsBinaryString(file);
+      }
     }
   }, {
     key: "inputXhrFile",
@@ -2909,11 +2961,60 @@ var _class = (_dec = Component({
         proof: true
       }).rotateBody(-0.4, 1, 0, 0);
 
-      var doDraw = function doDraw() {
+      doDraw = function doDraw() {
         if (_resizeFlag != resizeFlag) return;
         image3d.setUniformMatrix("u_matrix", camera.value());
         buffer.write(new Float32Array(boxModelData)).use('a_position', 3, 6, 0).use('a_color', 3, 6, 3);
         painter.drawLine(0, boxModelData.length / 6);
+
+        var _iterator = _createForOfIteratorHelper(modelJSONs),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var modelJSON = _step.value;
+
+            // Object3D.toJSON
+            if (modelJSON.metadata.type == "Object" && modelJSON.metadata.generator == "Object3D.toJSON") {
+              var _iterator2 = _createForOfIteratorHelper(modelJSON.geometries),
+                  _step2;
+
+              try {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                  var geometrie = _step2.value;
+                  var position = geometrie.data.attributes.position.array;
+                  var data = [];
+
+                  for (var i = 0; i < position.length; i += 3) {
+                    // 点的坐标
+                    data.push(position[i]);
+                    data.push(position[i + 1]);
+                    data.push(position[i + 2]); // 点的颜色
+
+                    data.push(0);
+                    data.push(0);
+                    data.push(0);
+                  } // 写入顶点数据
+
+
+                  buffer.write(new Float32Array(data)).use('a_position', 3, 6, 0).use('a_color', 3, 6, 3);
+                  painter.drawTriangle(0, position.length / 3);
+                }
+              } catch (err) {
+                _iterator2.e(err);
+              } finally {
+                _iterator2.f();
+              }
+            } // 不支持的格式
+            else {
+              alert('非常抱歉，当前选择的JSON的内容格式不支持！');
+            }
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
       };
 
       doDraw(); // 每次调整的弧度
@@ -2966,7 +3067,7 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/image3d/build/image3D.min.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['19']=function(){
+window.__etcpack__bundleSrc__['20']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     
@@ -3004,7 +3105,7 @@ window.__etcpack__bundleSrc__['19']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/browser/viewHandler.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['20']=function(){
+window.__etcpack__bundleSrc__['21']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     /*!
@@ -3017,10 +3118,10 @@ window.__etcpack__bundleSrc__['20']=function(){
  * Released under the MIT license
  */
 
-__etcpack__scope_args__=window.__etcpack__getBundle('21');
+__etcpack__scope_args__=window.__etcpack__getBundle('22');
 var xhtml =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('22');
+__etcpack__scope_args__=window.__etcpack__getBundle('23');
 var getKeyString =__etcpack__scope_args__.default;
 
 
@@ -3144,7 +3245,7 @@ __etcpack__scope_bundle__.default= function (callback) {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/browser/xhtml.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['21']=function(){
+window.__etcpack__bundleSrc__['22']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     /*!
@@ -3459,7 +3560,7 @@ __etcpack__scope_bundle__.default= {
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/@hai2007/browser/getKeyString.js
 /*****************************************************************/
-window.__etcpack__bundleSrc__['22']=function(){
+window.__etcpack__bundleSrc__['23']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     /*!
@@ -3549,10 +3650,10 @@ __etcpack__scope_bundle__.default= function (event) {
 /*************************** [bundle] ****************************/
 // Original file:./src/App/shader-vertex.c
 /*****************************************************************/
-window.__etcpack__bundleSrc__['23']=function(){
+window.__etcpack__bundleSrc__['24']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= "attribute vec4 a_position;\nattribute vec4 a_color;\n\nuniform mat4 u_matrix;\n\nvarying vec4 v_color;\n\nvoid main()\n{\n   vec4 temp=u_matrix * a_position;\n\n    // 表示眼睛距离vec4(0.0,0.0,1.0)的距离\n    float dist=2.0;\n\n    // 使用投影直接计算\n    // 此处要注意z轴承显示和实际的方向\n    gl_Position=vec4((dist+1.0)*temp.x/(dist+temp.z),(dist+1.0)*temp.y/(dist+temp.z),temp.z,1.0);\n\n    v_color = a_color;\n}\n"
+    __etcpack__scope_bundle__.default= "attribute vec4 a_position;\nattribute vec4 a_color;\n\nuniform mat4 u_matrix;\n\nvarying vec4 v_color;\n\nvoid main()\n{\n    vec4 temp = u_matrix * a_position;\n\n    // 表示眼睛距离vec4(0.0,0.0,1.0)的距离\n    float dist = 2.0;\n\n    // 使用投影直接计算\n    // 此处要注意z轴承显示和实际的方向是相反的\n    gl_Position = vec4((dist + 1.0) * temp.x / (dist + temp.z), (dist + 1.0) * temp.y / (dist + temp.z), temp.z, 1.0);\n\n    v_color = a_color;\n}\n"
   
     return __etcpack__scope_bundle__;
 }
@@ -3560,7 +3661,7 @@ window.__etcpack__bundleSrc__['23']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./src/App/shader-fragment.c
 /*****************************************************************/
-window.__etcpack__bundleSrc__['24']=function(){
+window.__etcpack__bundleSrc__['25']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     __etcpack__scope_bundle__.default= "precision mediump float;\n\nvarying vec4 v_color;\n\nvoid main()\n{\n    gl_FragColor = v_color;\n}\n"
@@ -3571,45 +3672,50 @@ window.__etcpack__bundleSrc__['24']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./src/tool/ResizeObserver.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['25']=function(){
+window.__etcpack__bundleSrc__['26']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _support_ = true;
 __etcpack__scope_bundle__.default= function (el, doback) {
   var observer = null;
+  var _hadWilldo_ = false;
+  var _hadNouse_ = false;
+
+  var doit = function doit() {
+    // 如果前置任务都完成了
+    if (!_hadWilldo_) {
+      _hadWilldo_ = true; // 既然前置任务已经没有了，那么就可以更新了？
+      // 不是的，可能非常短的时间里，后续有改变
+      // 因此延迟一点点来看看后续有没有改变
+      // 如果改变了，就再延迟看看
+
+      var interval = window.setInterval(function () {
+        // 判断当前是否可以立刻更新
+        if (!_hadNouse_) {
+          window.clearInterval(interval);
+          _hadWilldo_ = false;
+          doback();
+        }
+
+        _hadNouse_ = false;
+      }, 100);
+    } else {
+      _hadNouse_ = true;
+    }
+  };
 
   try {
-    var _hadWilldo_ = false;
-    var _hadNouse_ = false;
-    observer = new ResizeObserver(function () {
-      // 如果前置任务都完成了
-      if (!_hadWilldo_) {
-        _hadWilldo_ = true; // 既然前置任务已经没有了，那么就可以更新了？
-        // 不是的，可能非常短的时间里，后续有改变
-        // 因此延迟一点点来看看后续有没有改变
-        // 如果改变了，就再延迟看看
-
-        var interval = window.setInterval(function () {
-          // 判断当前是否可以立刻更新
-          if (!_hadNouse_) {
-            window.clearInterval(interval);
-            _hadWilldo_ = false;
-            doback();
-          }
-
-          _hadNouse_ = false;
-        }, 100);
-      } else {
-        _hadNouse_ = true;
-      }
-    });
+    observer = new ResizeObserver(doit);
     observer.observe(el);
   } catch (e) {
     // 如果浏览器不支持此接口
     if (_support_) {
       console.error('ResizeObserver undefined!'); // 不支持的话，提示一次就可以了
 
-      _support_ = false;
+      _support_ = false; // 使用resize进行退化支持
+
+      doit();
+      window.addEventListener('resize', doit, false);
     }
   }
 
@@ -3627,10 +3733,10 @@ __etcpack__scope_bundle__.default= function (el, doback) {
 /*************************** [bundle] ****************************/
 // Original file:./src/App/index.scss
 /*****************************************************************/
-window.__etcpack__bundleSrc__['26']=function(){
+window.__etcpack__bundleSrc__['27']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= "\n .model-editor{\n\nbackground-color: #eff2f2;\n\nwidth: 100vw;\n\nheight: 100vh;\n\n}\n\n .model-editor>div.menu{\n\nborder-bottom: 1px solid #cccccc;\n\nheight: 30px;\n\nheight: 30px;\n\nline-height: 30px;\n\n}\n\n .model-editor>div.menu>.logo{\n\nbackground-image: url('./image/logo-48.png');\n\npadding-left: 30px;\n\npadding-right: 10px;\n\ndisplay: inline-block;\n\nvertical-align: top;\n\nbackground-size: auto 70%;\n\nbackground-repeat: no-repeat;\n\nbackground-position: 5px center;\n\nfont-size: 12px;\n\ncursor: pointer;\n\ncolor: rgb(0, 0, 0);\n\nfont-weight: 800;\n\n}\n\n .model-editor>div.menu>.logo:hover{\n\ntext-decoration: underline;\n\n}\n\n .model-editor>div.menu>.logo{\n\nborder-right:1px solid #cccccc;\n\n}\n\n .model-editor>div.menu>span{\n\nmargin-left: 20px;\n\ndisplay: inline-block;\n\nvertical-align: top;\n\nfont-size: 12px;\n\ncursor: pointer;\n\nwhite-space: nowrap;\n\n}\n\n .model-editor>div.menu>span:hover{\n\ntext-decoration: underline;\n\nfont-weight: 800;\n\n}\n\n .model-editor>div.menu>span.more{\n\nposition: relative;\n\npadding-right: 10px;\n\n}\n\n .model-editor>div.menu>span.more:hover>div{\n\ndisplay: block;\n\n}\n\n .model-editor>div.menu>span.more::after{\n\nposition: absolute;\n\ntop: 13px;\n\nright: -3px;\n\nwidth: 0;\n\nheight: 0;\n\nborder-left: 4px solid transparent;\n\nborder-right: 4px solid transparent;\n\nborder-top: 5px solid #4f5959;\n\ncontent: \" \";\n\n}\n\n .model-editor>div.menu>span.more>div{\n\nposition: absolute;\n\nbackground-color: white;\n\nbox-shadow: 0 0 7px 0px #cccccc;\n\npadding: 5px 0;\n\nline-height: 1.8em;\n\ndisplay: none;\n\n}\n\n .model-editor>div.menu>span.more>div>span{\n\ndisplay: block;\n\npadding: 0 10px;\n\nfont-weight: 400;\n\n}\n\n .model-editor>div.menu>span.more>div>span:hover{\n\ntext-decoration: underline;\n\n}\n\n .model-editor>div.menu>span.more>div>span:not(:last-child){\n\nborder-bottom: 1px solid #cccccc;\n\n}\n\n .model-editor>div.content{\n\nwidth: 100vw;\n\nheight: calc(100vh - 30px);\n\noverflow: hidden;\n\ntext-align: center;\n\nbackground-color: #9fa2a3;\n\n}\n"
+    __etcpack__scope_bundle__.default= "\n .model-editor{\n\nbackground-color: #eff2f2;\n\nwidth: 100vw;\n\nheight: 100vh;\n\n}\n\n .model-editor>div.menu{\n\nborder-bottom: 1px solid #cccccc;\n\nheight: 30px;\n\nheight: 30px;\n\nline-height: 30px;\n\n}\n\n .model-editor>div.menu>.logo{\n\nbackground-image: url('./image/logo-48.png');\n\npadding-left: 30px;\n\npadding-right: 10px;\n\ndisplay: inline-block;\n\nvertical-align: top;\n\nbackground-size: auto 70%;\n\nbackground-repeat: no-repeat;\n\nbackground-position: 5px center;\n\nfont-size: 12px;\n\ncursor: pointer;\n\ncolor: rgb(0, 0, 0);\n\nfont-weight: 800;\n\n}\n\n .model-editor>div.menu>.logo:hover{\n\ntext-decoration: underline;\n\n}\n\n .model-editor>div.menu>.logo{\n\nborder-right:1px solid #cccccc;\n\n}\n\n .model-editor>div.menu>span{\n\nmargin-left: 20px;\n\ndisplay: inline-block;\n\nvertical-align: top;\n\nfont-size: 12px;\n\ncursor: pointer;\n\nwhite-space: nowrap;\n\n}\n\n .model-editor>div.menu>span:hover{\n\ntext-decoration: underline;\n\nfont-weight: 800;\n\n}\n\n .model-editor>div.menu>span.more{\n\nposition: relative;\n\npadding-right: 10px;\n\n}\n\n .model-editor>div.menu>span.more:hover>div{\n\ndisplay: block;\n\n}\n\n .model-editor>div.menu>span.more::after{\n\nposition: absolute;\n\ntop: 13px;\n\nright: -3px;\n\nwidth: 0;\n\nheight: 0;\n\nborder-left: 4px solid transparent;\n\nborder-right: 4px solid transparent;\n\nborder-top: 5px solid #4f5959;\n\ncontent: \" \";\n\n}\n\n .model-editor>div.menu>span.more>div{\n\nposition: absolute;\n\nbackground-color: white;\n\nbox-shadow: 0 0 7px 0px #cccccc;\n\npadding: 5px 0;\n\nline-height: 1.8em;\n\ndisplay: none;\n\n}\n\n .model-editor>div.menu>span.more>div>span{\n\ndisplay: block;\n\npadding: 0 10px;\n\nfont-weight: 400;\n\n}\n\n .model-editor>div.menu>span.more>div>span:hover{\n\ntext-decoration: underline;\n\n}\n\n .model-editor>div.menu>span.more>div>span:not(:last-child){\n\nborder-bottom: 1px solid #cccccc;\n\n}\n\n .model-editor>div.content{\n\nwidth: 100vw;\n\nheight: calc(100vh - 30px);\n\noverflow: hidden;\n\ntext-align: center;\n\nbackground-color: #9fa2a3;\n\n}\n\n .no-view{\n\ndisplay: none;\n\n}\n"
   
     return __etcpack__scope_bundle__;
 }
@@ -3638,10 +3744,10 @@ window.__etcpack__bundleSrc__['26']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./src/App/index.html
 /*****************************************************************/
-window.__etcpack__bundleSrc__['27']=function(){
+window.__etcpack__bundleSrc__['28']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= "<div class=\"model-editor\">\n    <div class=\"menu\">\n        <a class=\"logo\" target=\"_blank\" href='https://github.com/hai2007/model-editor'>\n            Model Editor\n        </a>\n        <span ui-on:click='resetEditor'>\n            新建\n        </span>\n        <span class=\"more\">\n            导入\n            <div>\n                <span ui-on:click='inputLocalFile'>\n                    本地选择\n                </span>\n                <span  ui-on:click='inputXhrFile'>\n                    XHR文件请求\n                </span>\n            </div>\n        </span>\n        <span ui-on:click='exportFile'>\n            导出\n        </span>\n        <span class='more'>\n            帮助\n            <div>\n                <span>\n                    <a href=\"https://github.com/hai2007/model-editor/issues\" target=\"_blank\">去留言</a>\n                </span>\n                <span>\n                    <a href=\"https://hai2007.gitee.io/image3d/\" target=\"_blank\">文档（image3D.js）</a>\n                </span>\n            </div>\n        </span>\n    </div>\n    <div class=\"content\" id='canvas'>\n\n        <!-- 画布 -->\n        <canvas ui-bind:width='width' ui-bind:height='height'></canvas>\n\n    </div>\n</div>\n"
+    __etcpack__scope_bundle__.default= "<div class=\"model-editor\">\n    <div class=\"menu\">\n        <a class=\"logo\" target=\"_blank\" href='https://github.com/hai2007/model-editor'>\n            Model Editor\n        </a>\n        <span ui-on:click='resetEditor'>\n            新建\n        </span>\n        <span class=\"more\">\n            导入\n            <div>\n                <span>\n                    <label for='file'>本地选择</label>\n                </span>\n                <span ui-on:click='inputXhrFile'>\n                    XHR文件请求\n                </span>\n            </div>\n        </span>\n        <span ui-on:click='exportFile'>\n            导出\n        </span>\n        <span class='more'>\n            帮助\n            <div>\n                <span>\n                    <a href=\"https://github.com/hai2007/model-editor/issues\" target=\"_blank\">去留言</a>\n                </span>\n                <span>\n                    <a href=\"https://hai2007.gitee.io/image3d/\" target=\"_blank\">文档（image3D.js）</a>\n                </span>\n            </div>\n        </span>\n    </div>\n    <div class=\"content\" id='canvas'>\n\n        <!-- 画布 -->\n        <canvas ui-bind:width='width' ui-bind:height='height'></canvas>\n\n    </div>\n</div>\n\n<!-- 一些辅助而不需要显示的内容 -->\n<div class='no-view'>\n\n    <!-- 选择本地文件 -->\n    <input type=\"file\" id=\"file\" ui-on:change=\"inputLocalFile\" accept=\".json,.stl,.obj,.fbx\" />\n\n</div>\n"
   
     return __etcpack__scope_bundle__;
 }
@@ -3649,7 +3755,7 @@ window.__etcpack__bundleSrc__['27']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./src/tool/box-model.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['28']=function(){
+window.__etcpack__bundleSrc__['29']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     __etcpack__scope_bundle__.default= (function () {
@@ -3694,7 +3800,7 @@ window.__etcpack__bundleSrc__['28']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-bind.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['29']=function(){
+window.__etcpack__bundleSrc__['30']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -3708,7 +3814,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Directive=__etcpack__scope_args__.Directive;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('6');
+__etcpack__scope_args__=window.__etcpack__getBundle('7');
 var isString=__etcpack__scope_args__.isString;
 
 
@@ -3756,7 +3862,7 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-model.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['30']=function(){
+window.__etcpack__bundleSrc__['31']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -3771,7 +3877,7 @@ __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Directive=__etcpack__scope_args__.Directive;
 var setValue=__etcpack__scope_args__.setValue;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('21');
+__etcpack__scope_args__=window.__etcpack__getBundle('22');
 var xhtml =__etcpack__scope_args__.default;
 
 
@@ -3808,7 +3914,7 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-on.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['31']=function(){
+window.__etcpack__bundleSrc__['32']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -3822,7 +3928,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 __etcpack__scope_args__=window.__etcpack__getBundle('1');
 var Directive=__etcpack__scope_args__.Directive;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('21');
+__etcpack__scope_args__=window.__etcpack__getBundle('22');
 var xhtml =__etcpack__scope_args__.default;
 
 /**

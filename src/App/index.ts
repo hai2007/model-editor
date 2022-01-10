@@ -16,6 +16,10 @@ import boxModel from '../tool/box-model'
 let boxModelData = boxModel()
 
 let resizeFlag = 0
+let doDraw
+
+// 当前绘制的模型数据
+let modelJSONs = []
 
 @Component({
     selector: "app-root",
@@ -50,11 +54,58 @@ export default class {
     }
 
     resetEditor() {
-        alert('【新建】功能未完成，开发中，敬请期待！')
+
+        if (window.confirm('是否确定新建？')) {
+
+            // 清除数据
+            modelJSONs = []
+
+            // 重新绘制
+            resizeFlag += 1
+            this.doit(resizeFlag)
+
+        }
+
     }
 
-    inputLocalFile() {
-        alert('【本地选择】功能未完成，开发中，敬请期待！')
+    inputLocalFile(event) {
+
+        let file = event.target.files[0]
+        let reader = new FileReader()
+        let isJSON
+
+        reader.onload = () => {
+
+            let modelJSON
+
+            if (isJSON) {
+                modelJSON = JSON.parse(<string>reader.result)
+
+                // 后续再考虑使用需要借助indexedDB或别的缓存起来
+                modelJSONs.push(modelJSON)
+
+                // 重新绘制
+                doDraw()
+
+            } else {
+                console.log(reader.result)
+                alert('当前格式未支持（开发中），当前请选择JSON文件的模型~')
+            }
+
+        }
+
+        // JSON字符串
+        // （可能是Object3D.toJSON或者别的规范格式）
+        if (/\.json$/.test(file.name)) {
+            isJSON = true
+            reader.readAsText(file)
+        }
+
+        // ASCII编码的或者二进制文件
+        else {
+            reader.readAsBinaryString(file)
+        }
+
     }
 
     inputXhrFile() {
@@ -81,7 +132,7 @@ export default class {
             proof: true
         }).rotateBody(-0.4, 1, 0, 0)
 
-        let doDraw = () => {
+        doDraw = () => {
 
             if (_resizeFlag != resizeFlag) return
 
@@ -92,6 +143,49 @@ export default class {
                 .use('a_color', 3, 6, 3)
 
             painter.drawLine(0, boxModelData.length / 6)
+
+            for (let modelJSON of modelJSONs) {
+
+                // Object3D.toJSON
+                if (modelJSON.metadata.type == "Object" && modelJSON.metadata.generator == "Object3D.toJSON") {
+
+                    for (let geometrie of modelJSON.geometries) {
+
+                        let position = geometrie.data.attributes.position.array
+
+                        let data = []
+                        for (let i = 0; i < position.length; i += 3) {
+
+                            // 点的坐标
+                            data.push(position[i])
+                            data.push(position[i + 1])
+                            data.push(position[i + 2])
+
+                            // 点的颜色
+                            data.push(0)
+                            data.push(0)
+                            data.push(0)
+
+                        }
+
+                        // 写入顶点数据
+                        buffer
+                            .write(new Float32Array(data))
+                            .use('a_position', 3, 6, 0)
+                            .use('a_color', 3, 6, 3)
+
+                        painter.drawTriangle(0, position.length / 3)
+
+                    }
+
+                }
+
+                // 不支持的格式
+                else {
+                    alert('非常抱歉，当前选择的JSON的内容格式不支持！')
+                }
+
+            }
 
         }
 
