@@ -3712,11 +3712,12 @@ __etcpack__scope_bundle__.default= function (el, doback) {
     if (_support_) {
       console.error('ResizeObserver undefined!'); // 不支持的话，提示一次就可以了
 
-      _support_ = false; // 使用resize进行退化支持
+      _support_ = false;
+    } // 使用resize进行退化支持
 
-      doit();
-      window.addEventListener('resize', doit, false);
-    }
+
+    doit();
+    window.addEventListener('resize', doit, false);
   }
 
   return function () {

@@ -50,12 +50,11 @@ export default function (el, doback) {
 
             // 不支持的话，提示一次就可以了
             _support_ = false
-
-            // 使用resize进行退化支持
-            doit()
-            window.addEventListener('resize', doit, false)
-
         }
+
+        // 使用resize进行退化支持
+        doit()
+        window.addEventListener('resize', doit, false)
 
     }
 
