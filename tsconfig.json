@@ -5,6 +5,11 @@
         "sourceMap": true, // 输出 Source Map 方便调试
         "importHelpers": true, // 减少代码的冗余，类似：@babel/plugin-transform-runtime
         "experimentalDecorators": true, // 为了可以使用装饰器
+        "lib": [
+            "es2015.promise",
+            "dom",
+            "es5"
+        ]
     },
     "exclude": [ // 不编译这些目录里的文件
         "node_modules"

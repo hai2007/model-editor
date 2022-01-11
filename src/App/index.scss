@@ -78,6 +78,10 @@
                             display: block;
                             padding: 0 10px;
                             font-weight: 400;
+                            cursor: pointer;
+                            &>label{
+                                cursor: pointer;
+                            }
 
                             &:hover {
                                 text-decoration: underline;

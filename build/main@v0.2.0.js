@@ -2767,13 +2767,13 @@ __etcpack__scope_args__=window.__etcpack__getBundle('19');
 var AppComponent =__etcpack__scope_args__.default;
  // 指令
 
-__etcpack__scope_args__=window.__etcpack__getBundle('30');
+__etcpack__scope_args__=window.__etcpack__getBundle('32');
 var uiBind =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('31');
+__etcpack__scope_args__=window.__etcpack__getBundle('33');
 var uiModel =__etcpack__scope_args__.default;
 
-__etcpack__scope_args__=window.__etcpack__getBundle('32');
+__etcpack__scope_args__=window.__etcpack__getBundle('34');
 var uiOn =__etcpack__scope_args__.default;
 
 
@@ -2845,9 +2845,15 @@ var style =__etcpack__scope_args__.default;
 
 __etcpack__scope_args__=window.__etcpack__getBundle('28');
 var template =__etcpack__scope_args__.default;
- // 辅助网格数据
 
 __etcpack__scope_args__=window.__etcpack__getBundle('29');
+var loadFile =__etcpack__scope_args__.default;
+
+__etcpack__scope_args__=window.__etcpack__getBundle('30');
+var doDrawView =__etcpack__scope_args__.default;
+ // 辅助网格数据
+
+__etcpack__scope_args__=window.__etcpack__getBundle('31');
 var boxModel =__etcpack__scope_args__.default;
 
 var boxModelData = boxModel();
@@ -2906,34 +2912,27 @@ var _class = (_dec = Component({
   }, {
     key: "inputLocalFile",
     value: function inputLocalFile(event) {
-      var file = event.target.files[0];
-      var reader = new FileReader();
-      var isJSON;
+      loadFile(event.target.files).then(function (files) {
+        var _iterator = _createForOfIteratorHelper(files),
+            _step;
 
-      reader.onload = function () {
-        var modelJSON;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var file = _step.value;
+            // 后续再考虑使用需要借助indexedDB或别的缓存起来
+            modelJSONs.push(file);
+          } // 重新绘制
 
-        if (isJSON) {
-          modelJSON = JSON.parse(reader.result); // 后续再考虑使用需要借助indexedDB或别的缓存起来
-
-          modelJSONs.push(modelJSON); // 重新绘制
-
-          doDraw();
-        } else {
-          console.log(reader.result);
-          alert('当前格式未支持（开发中），当前请选择JSON文件的模型~');
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
         }
-      }; // JSON字符串
-      // （可能是Object3D.toJSON或者别的规范格式）
 
-
-      if (/\.json$/.test(file.name)) {
-        isJSON = true;
-        reader.readAsText(file);
-      } // ASCII编码的或者二进制文件
-      else {
-        reader.readAsBinaryString(file);
-      }
+        doDraw();
+      })["catch"](function (e) {
+        alert(e);
+      });
     }
   }, {
     key: "inputXhrFile",
@@ -2967,53 +2966,18 @@ var _class = (_dec = Component({
         buffer.write(new Float32Array(boxModelData)).use('a_position', 3, 6, 0).use('a_color', 3, 6, 3);
         painter.drawLine(0, boxModelData.length / 6);
 
-        var _iterator = _createForOfIteratorHelper(modelJSONs),
-            _step;
+        var _iterator2 = _createForOfIteratorHelper(modelJSONs),
+            _step2;
 
         try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var modelJSON = _step.value;
-
-            // Object3D.toJSON
-            if (modelJSON.metadata.type == "Object" && modelJSON.metadata.generator == "Object3D.toJSON") {
-              var _iterator2 = _createForOfIteratorHelper(modelJSON.geometries),
-                  _step2;
-
-              try {
-                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-                  var geometrie = _step2.value;
-                  var position = geometrie.data.attributes.position.array;
-                  var data = [];
-
-                  for (var i = 0; i < position.length; i += 3) {
-                    // 点的坐标
-                    data.push(position[i]);
-                    data.push(position[i + 1]);
-                    data.push(position[i + 2]); // 点的颜色
-
-                    data.push(0);
-                    data.push(0);
-                    data.push(0);
-                  } // 写入顶点数据
-
-
-                  buffer.write(new Float32Array(data)).use('a_position', 3, 6, 0).use('a_color', 3, 6, 3);
-                  painter.drawTriangle(0, position.length / 3);
-                }
-              } catch (err) {
-                _iterator2.e(err);
-              } finally {
-                _iterator2.f();
-              }
-            } // 不支持的格式
-            else {
-              alert('非常抱歉，当前选择的JSON的内容格式不支持！');
-            }
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var modelJSON = _step2.value;
+            doDrawView(modelJSON, painter, buffer);
           }
         } catch (err) {
-          _iterator.e(err);
+          _iterator2.e(err);
         } finally {
-          _iterator.f();
+          _iterator2.f();
         }
       };
 
@@ -3737,7 +3701,7 @@ __etcpack__scope_bundle__.default= function (el, doback) {
 window.__etcpack__bundleSrc__['27']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= "\n .model-editor{\n\nbackground-color: #eff2f2;\n\nwidth: 100vw;\n\nheight: 100vh;\n\n}\n\n .model-editor>div.menu{\n\nborder-bottom: 1px solid #cccccc;\n\nheight: 30px;\n\nheight: 30px;\n\nline-height: 30px;\n\n}\n\n .model-editor>div.menu>.logo{\n\nbackground-image: url('./image/logo-48.png');\n\npadding-left: 30px;\n\npadding-right: 10px;\n\ndisplay: inline-block;\n\nvertical-align: top;\n\nbackground-size: auto 70%;\n\nbackground-repeat: no-repeat;\n\nbackground-position: 5px center;\n\nfont-size: 12px;\n\ncursor: pointer;\n\ncolor: rgb(0, 0, 0);\n\nfont-weight: 800;\n\n}\n\n .model-editor>div.menu>.logo:hover{\n\ntext-decoration: underline;\n\n}\n\n .model-editor>div.menu>.logo{\n\nborder-right:1px solid #cccccc;\n\n}\n\n .model-editor>div.menu>span{\n\nmargin-left: 20px;\n\ndisplay: inline-block;\n\nvertical-align: top;\n\nfont-size: 12px;\n\ncursor: pointer;\n\nwhite-space: nowrap;\n\n}\n\n .model-editor>div.menu>span:hover{\n\ntext-decoration: underline;\n\nfont-weight: 800;\n\n}\n\n .model-editor>div.menu>span.more{\n\nposition: relative;\n\npadding-right: 10px;\n\n}\n\n .model-editor>div.menu>span.more:hover>div{\n\ndisplay: block;\n\n}\n\n .model-editor>div.menu>span.more::after{\n\nposition: absolute;\n\ntop: 13px;\n\nright: -3px;\n\nwidth: 0;\n\nheight: 0;\n\nborder-left: 4px solid transparent;\n\nborder-right: 4px solid transparent;\n\nborder-top: 5px solid #4f5959;\n\ncontent: \" \";\n\n}\n\n .model-editor>div.menu>span.more>div{\n\nposition: absolute;\n\nbackground-color: white;\n\nbox-shadow: 0 0 7px 0px #cccccc;\n\npadding: 5px 0;\n\nline-height: 1.8em;\n\ndisplay: none;\n\n}\n\n .model-editor>div.menu>span.more>div>span{\n\ndisplay: block;\n\npadding: 0 10px;\n\nfont-weight: 400;\n\n}\n\n .model-editor>div.menu>span.more>div>span:hover{\n\ntext-decoration: underline;\n\n}\n\n .model-editor>div.menu>span.more>div>span:not(:last-child){\n\nborder-bottom: 1px solid #cccccc;\n\n}\n\n .model-editor>div.content{\n\nwidth: 100vw;\n\nheight: calc(100vh - 30px);\n\noverflow: hidden;\n\ntext-align: center;\n\nbackground-color: #9fa2a3;\n\n}\n\n .no-view{\n\ndisplay: none;\n\n}\n"
+    __etcpack__scope_bundle__.default= "\n .model-editor{\n\nbackground-color: #eff2f2;\n\nwidth: 100vw;\n\nheight: 100vh;\n\n}\n\n .model-editor>div.menu{\n\nborder-bottom: 1px solid #cccccc;\n\nheight: 30px;\n\nheight: 30px;\n\nline-height: 30px;\n\n}\n\n .model-editor>div.menu>.logo{\n\nbackground-image: url('./image/logo-48.png');\n\npadding-left: 30px;\n\npadding-right: 10px;\n\ndisplay: inline-block;\n\nvertical-align: top;\n\nbackground-size: auto 70%;\n\nbackground-repeat: no-repeat;\n\nbackground-position: 5px center;\n\nfont-size: 12px;\n\ncursor: pointer;\n\ncolor: rgb(0, 0, 0);\n\nfont-weight: 800;\n\n}\n\n .model-editor>div.menu>.logo:hover{\n\ntext-decoration: underline;\n\n}\n\n .model-editor>div.menu>.logo{\n\nborder-right:1px solid #cccccc;\n\n}\n\n .model-editor>div.menu>span{\n\nmargin-left: 20px;\n\ndisplay: inline-block;\n\nvertical-align: top;\n\nfont-size: 12px;\n\ncursor: pointer;\n\nwhite-space: nowrap;\n\n}\n\n .model-editor>div.menu>span:hover{\n\ntext-decoration: underline;\n\nfont-weight: 800;\n\n}\n\n .model-editor>div.menu>span.more{\n\nposition: relative;\n\npadding-right: 10px;\n\n}\n\n .model-editor>div.menu>span.more:hover>div{\n\ndisplay: block;\n\n}\n\n .model-editor>div.menu>span.more::after{\n\nposition: absolute;\n\ntop: 13px;\n\nright: -3px;\n\nwidth: 0;\n\nheight: 0;\n\nborder-left: 4px solid transparent;\n\nborder-right: 4px solid transparent;\n\nborder-top: 5px solid #4f5959;\n\ncontent: \" \";\n\n}\n\n .model-editor>div.menu>span.more>div{\n\nposition: absolute;\n\nbackground-color: white;\n\nbox-shadow: 0 0 7px 0px #cccccc;\n\npadding: 5px 0;\n\nline-height: 1.8em;\n\ndisplay: none;\n\n}\n\n .model-editor>div.menu>span.more>div>span{\n\ndisplay: block;\n\npadding: 0 10px;\n\nfont-weight: 400;\n\ncursor: pointer;\n\n}\n\n .model-editor>div.menu>span.more>div>span>label{\n\ncursor: pointer;\n\n}\n\n .model-editor>div.menu>span.more>div>span:hover{\n\ntext-decoration: underline;\n\n}\n\n .model-editor>div.menu>span.more>div>span:not(:last-child){\n\nborder-bottom: 1px solid #cccccc;\n\n}\n\n .model-editor>div.content{\n\nwidth: 100vw;\n\nheight: calc(100vh - 30px);\n\noverflow: hidden;\n\ntext-align: center;\n\nbackground-color: #9fa2a3;\n\n}\n\n .no-view{\n\ndisplay: none;\n\n}\n"
   
     return __etcpack__scope_bundle__;
 }
@@ -3748,7 +3712,133 @@ window.__etcpack__bundleSrc__['27']=function(){
 window.__etcpack__bundleSrc__['28']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
-    __etcpack__scope_bundle__.default= "<div class=\"model-editor\">\n    <div class=\"menu\">\n        <a class=\"logo\" target=\"_blank\" href='https://github.com/hai2007/model-editor'>\n            Model Editor\n        </a>\n        <span ui-on:click='resetEditor'>\n            新建\n        </span>\n        <span class=\"more\">\n            导入\n            <div>\n                <span>\n                    <label for='file'>本地选择</label>\n                </span>\n                <span ui-on:click='inputXhrFile'>\n                    XHR文件请求\n                </span>\n            </div>\n        </span>\n        <span ui-on:click='exportFile'>\n            导出\n        </span>\n        <span class='more'>\n            帮助\n            <div>\n                <span>\n                    <a href=\"https://github.com/hai2007/model-editor/issues\" target=\"_blank\">去留言</a>\n                </span>\n                <span>\n                    <a href=\"https://hai2007.gitee.io/image3d/\" target=\"_blank\">文档（image3D.js）</a>\n                </span>\n            </div>\n        </span>\n    </div>\n    <div class=\"content\" id='canvas'>\n\n        <!-- 画布 -->\n        <canvas ui-bind:width='width' ui-bind:height='height'></canvas>\n\n    </div>\n</div>\n\n<!-- 一些辅助而不需要显示的内容 -->\n<div class='no-view'>\n\n    <!-- 选择本地文件 -->\n    <input type=\"file\" id=\"file\" ui-on:change=\"inputLocalFile\" accept=\".json,.stl,.obj,.fbx\" />\n\n</div>\n"
+    __etcpack__scope_bundle__.default= "<div class=\"model-editor\">\n    <div class=\"menu\">\n        <a class=\"logo\" target=\"_blank\" href='https://github.com/hai2007/model-editor'>\n            Model Editor\n        </a>\n        <span ui-on:click='resetEditor'>\n            新建\n        </span>\n        <span class=\"more\">\n            导入\n            <div>\n                <span>\n                    <label for='file'>本地选择</label>\n                </span>\n                <span ui-on:click='inputXhrFile'>\n                    XHR文件请求\n                </span>\n            </div>\n        </span>\n        <span ui-on:click='exportFile'>\n            导出\n        </span>\n        <span class='more'>\n            帮助\n            <div>\n                <span>\n                    <a href=\"https://github.com/hai2007/model-editor/issues\" target=\"_blank\">去留言</a>\n                </span>\n                <span>\n                    <a href=\"https://hai2007.gitee.io/image3d/\" target=\"_blank\">文档（image3D.js）</a>\n                </span>\n            </div>\n        </span>\n    </div>\n    <div class=\"content\" id='canvas'>\n\n        <!-- 画布 -->\n        <canvas ui-bind:width='width' ui-bind:height='height'></canvas>\n\n    </div>\n</div>\n\n<!-- 一些辅助而不需要显示的内容 -->\n<div class='no-view'>\n\n    <!-- 选择本地文件 -->\n    <input type=\"file\" id=\"file\" multiple ui-on:change=\"inputLocalFile\"\n        accept=\".json,.stl,.obj,.fbx,.mtl,.ply,.gltf,.mod\" />\n\n</div>\n"
+  
+    return __etcpack__scope_bundle__;
+}
+
+/*************************** [bundle] ****************************/
+// Original file:./src/tool/loadFile.ts
+/*****************************************************************/
+window.__etcpack__bundleSrc__['29']=function(){
+    var __etcpack__scope_bundle__={};
+    var __etcpack__scope_args__;
+    function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+__etcpack__scope_bundle__.default= (function (files) {
+  return new Promise(function (resolve, reject) {
+    var _promises = [];
+
+    var _iterator = _createForOfIteratorHelper(files),
+        _step;
+
+    try {
+      var _loop = function _loop() {
+        var file = _step.value;
+
+        var _promise = new Promise(function (resolve, reject) {
+          var reader = new FileReader();
+
+          reader.onload = function () {
+            // 如果是JSON文件，说明是之前解析好的
+            if (/\.json$/.test(file.name)) {
+              // 后续这里的json可能会统一格式，会进行统一的格式处理
+              // 当前积累的案例不足，无法设计出一个比较好的统一的格式
+              // 不过，具体的也看情况再说
+              resolve(JSON.parse(reader.result));
+            } // 其它，说明还没有完成解析
+            else {
+              console.log(reader.result);
+              reject('当前文件(' + file.name + ')对应的格式开发未完成，敬请期待~');
+            }
+          }; // ASCII编码的文本文件或二进制文件
+          // 准备支持的格式
+
+
+          if (/\.(json|mtl|obj)$/.test(file.name)) {
+            reader.readAsBinaryString(file);
+          } // 如果选择的文件，还没有被计划进行支持
+          else {
+            reject('当前文件(' + file.name + ')对应的格式未支持，如果你需要使用，可以联系我们： https://github.com/hai2007/model-editor/issues');
+          }
+        });
+
+        _promises.push(_promise);
+      };
+
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        _loop();
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    Promise.all(_promises).then(function (result) {
+      resolve(result);
+    })["catch"](function (e) {
+      reject(e);
+    });
+  });
+});
+  
+    return __etcpack__scope_bundle__;
+}
+
+/*************************** [bundle] ****************************/
+// Original file:./src/tool/doDrawView.ts
+/*****************************************************************/
+window.__etcpack__bundleSrc__['30']=function(){
+    var __etcpack__scope_bundle__={};
+    var __etcpack__scope_args__;
+    function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+__etcpack__scope_bundle__.default= (function (modelJSON, painter, buffer) {
+  // Object3D.toJSON
+  if (modelJSON.metadata.type == "Object" && modelJSON.metadata.generator == "Object3D.toJSON") {
+    var _iterator = _createForOfIteratorHelper(modelJSON.geometries),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var geometrie = _step.value;
+        var position = geometrie.data.attributes.position.array;
+        var data = [];
+
+        for (var i = 0; i < position.length; i += 3) {
+          // 点的坐标
+          data.push(position[i]);
+          data.push(position[i + 1]);
+          data.push(position[i + 2]); // 点的颜色
+
+          data.push(0);
+          data.push(0);
+          data.push(0);
+        } // 写入顶点数据
+
+
+        buffer.write(new Float32Array(data)).use('a_position', 3, 6, 0).use('a_color', 3, 6, 3);
+        painter.drawTriangle(0, position.length / 3);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  } // 不支持的格式
+  else {
+    alert('非常抱歉，当前选择的JSON的内容格式不支持！');
+  }
+});
   
     return __etcpack__scope_bundle__;
 }
@@ -3756,7 +3846,7 @@ window.__etcpack__bundleSrc__['28']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./src/tool/box-model.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['29']=function(){
+window.__etcpack__bundleSrc__['31']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     __etcpack__scope_bundle__.default= (function () {
@@ -3801,7 +3891,7 @@ window.__etcpack__bundleSrc__['29']=function(){
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-bind.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['30']=function(){
+window.__etcpack__bundleSrc__['32']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -3863,7 +3953,7 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-model.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['31']=function(){
+window.__etcpack__bundleSrc__['33']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;
@@ -3915,7 +4005,7 @@ __etcpack__scope_bundle__.default=_class;
 /*************************** [bundle] ****************************/
 // Original file:./node_modules/sprout-ui/nefbl/directive/ui-on.ts
 /*****************************************************************/
-window.__etcpack__bundleSrc__['32']=function(){
+window.__etcpack__bundleSrc__['34']=function(){
     var __etcpack__scope_bundle__={};
     var __etcpack__scope_args__;
     var _dec, _class2;

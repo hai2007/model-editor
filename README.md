@@ -27,7 +27,7 @@
 ## Issues
 使用的时候遇到任何问题或有好的建议，请点击进入[issue](https://github.com/hai2007/model-editor/issues)，欢迎参与维护！
 
-> 特别感谢[【Blender】](https://www.blender.org/)，一个```Free and Open Source```的软件，可以去[【版本列表】](https://mirrors.aliyun.com/blender/release/)选择需要的版本下载！
+> 特别感谢[【Blender】](https://www.blender.org/)，一个```Free and Open Source```的软件，本项目的模型数据解析基于此软件探索，可以去[【版本列表】](https://mirrors.aliyun.com/blender/release/)选择需要的版本下载！
 
 ## How to use?
 
